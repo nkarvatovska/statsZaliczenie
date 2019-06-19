@@ -1,0 +1,93 @@
+---
+title: "Data_pulling_ESS"
+author: "nkarvatovska"
+date: "19 czerwca 2019"
+output: html_document
+---
+#Czy z wiekiem porozumiewanie się z ludżmi maleje?
+
+
+```{r, warning=FALSE}
+library(foreign)
+
+ESS_nPol <- read.spss("C:/CG_stats-master/ESS8PL.sav", use.value.labels = F, to.data.frame = T) ## pełne etykiety
+
+
+spotkania <- ESS_nPol$sclmeet #How often socially meet with friends, relatives or colleagues
+wiek <- ESS_nPol$agea #age of respodent
+dyskusja <- ESS_nPol$inprdsc # 	How many people with whom you can discuss intimate and personal matters
+porozumiewanie <- ESS_nPol$ipudrst #Important to understand different people
+
+
+barplot(table(wiek))
+```
+##Czy często się spotykamy z przyjaciólmi?
+
+```{r}
+barplot(table(spotkania))
+```
+##Z iloma ludżmi możemy dyskutować o sprawach intymnych i osobistych? 
+
+```{r}
+barplot(table(dyskusja))
+```
+##Czy jest ważne porozumiewanie się z innymi osobami?
+
+```{r}
+barplot(table(porozumiewanie))
+
+```
+
+```{r}
+library(corrplot)
+
+dane1 <-data.frame(wiek, dyskusja)
+dane2 <-data.frame(wiek, porozumiewanie)
+dane3 <-data.frame(wiek, spotkania)
+
+
+d1 <-as.matrix(dane1)
+d2 <-as.matrix(dane2)
+d3 <-as.matrix(dane3)
+
+
+mcor1 <-cor(d1, use = "na.or.complete")
+mcor2 <-cor(d2, use = "na.or.complete")
+mcor3 <-cor(d3, use = "na.or.complete")
+
+```
+
+##Czy z wiekeim ilość osób z którymi możemy porozmawiać o swoich sprawach osobistych się maleje?
+```{r}
+
+p1 <-corrplot(mcor1, type = "upper", col = c("purple", "white"), bg = "lightpink")   
+```
+##Jak można zobaczyć z przedstawionych wykresóW to jest to prawda. Z wiekiem co raz mniej chcemy komuś sie wypowiedzieć.  
+
+
+```{r}
+p2 <-corrplot(mcor1, type = "upper",  method = "number", col = c("purple", "white"), bg = "lightpink")
+```
+
+##Czy z wiekiem nam załeży na porozumiewaniu sie z innymi osobami?
+
+```{r}
+par(mfrow=c(1,2))
+p3 <-corrplot(mcor2, type = "upper",  method = "number", col = c("blue", "white"), bg = "lightpink")
+p4 <-corrplot(mcor2, type = "upper", col = c("blue", "white"), bg = "lightpink") 
+
+```
+
+##Można teraz przejść do ostatniego wykresu, który napewno potwierdzi to, że wraz z wiekiem stajemy się bardziej zamknięci w sobie. I nasza chęć do komunikowania się z ludżmi się zmniejsza. Chcemy coraz bardziej się oddzielić od innych.
+```{r}
+
+p5 <-corrplot.mixed(mcor3, lower.col = "purple", upper.col = c("purple", "white"), lower.bg = "lightgrey",  number.cex = .7,)
+```
+
+###Dziękuję za uwagę Nataliia Karvatovska 
+
+```{r}
+
+hist(dyskusja)
+```
+
