@@ -1,6 +1,6 @@
 ---
 title: "Data_pulling_ESS"
-author: "nkarvatovska"
+author: "Nataliia Karvatovska"
 date: "19 czerwca 2019"
 output: html_document
 ---
