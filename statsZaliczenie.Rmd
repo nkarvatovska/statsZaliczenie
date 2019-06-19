@@ -25,7 +25,7 @@ barplot(table(wiek))
 ```{r}
 barplot(table(spotkania))
 ```
-##Z iloma ludżmi możemy dyskutować o sprawach intymnych i osobistych? 
+##Z iloma ludżmi możemy dyskutować o sprawach intymnych oraz osobistych? 
 
 ```{r}
 barplot(table(dyskusja))
@@ -80,7 +80,7 @@ p4 <-corrplot(mcor2, type = "upper", col = c("blue", "white"), bg = "lightpink")
 ##Można teraz przejść do ostatniego wykresu, który napewno potwierdzi to, że wraz z wiekiem stajemy się bardziej zamknięci w sobie. I nasza chęć do komunikowania się z ludżmi się zmniejsza. Chcemy coraz bardziej się oddzielić od innych.
 ```{r}
 
-p5 <-corrplot.mixed(mcor3, lower.col = "purple", upper.col = c("purple", "white"), lower.bg = "lightgrey",  number.cex = .7,)
+p5 <-corrplot.mixed(mcor3, lower.col = "purple", upper.col = c("purple", "white"),  number.cex = .7,)
 ```
 
 
