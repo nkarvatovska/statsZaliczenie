@@ -4,8 +4,7 @@ author: "Nataliia Karvatovska"
 date: "19 czerwca 2019"
 output: html_document
 ---
-#Czy z wiekiem porozumiewanie się z ludżmi maleje?
-
+#Porozumiewanie się z ludźmi A wiek
 
 ```{r, warning=FALSE}
 library(foreign)
@@ -84,10 +83,5 @@ p4 <-corrplot(mcor2, type = "upper", col = c("blue", "white"), bg = "lightpink")
 p5 <-corrplot.mixed(mcor3, lower.col = "purple", upper.col = c("purple", "white"), lower.bg = "lightgrey",  number.cex = .7,)
 ```
 
-###Dziękuję za uwagę Nataliia Karvatovska 
 
-```{r}
-
-hist(dyskusja)
-```
 
